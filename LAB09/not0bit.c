@@ -7,12 +7,7 @@ int main()
     printf("Enter an 8-bit number: ");
     scanf("%d", &n);
     x = (unsigned char)n;
-    int numbits = 0;
-    for (int i = n; i > 0; i /=2){
-        if (i%2 == 1){
-            numbits++;
-        }
-    }
+    int numbits = x%2 + (x>>1)%2 + (x>>2)%2 + (x>>3)%2 + (x>>4)%2 + (x>>5)%2 + (x>>6)%2 + (x>>7)%2;
 
     printf("The number %d has %d non-zero bits\n", x, numbits);
     return 0;
