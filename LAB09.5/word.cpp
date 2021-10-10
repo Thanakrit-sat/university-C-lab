@@ -1,34 +1,36 @@
 #include <iostream>
 using namespace std;
 
-typedef struct {
-    char word[20];
+typedef struct Word_ {
+    string word;
     int count;    
 }Word;
 
 int main(){
-    char input[21];
+    string input;
     int i, last_word = 0, find = 0;
     Word data[20];
-    scanf("%20s", input);
 
-    while(input != "exit"){                
-        int count = 0;
-        for (int i = 0; i < last_word;i++){
+    while(true){
+        cin >> input;
+        if (input == "exit"){
+            break;
+        }
+        for (i = 0; i < last_word; i++){
             if (input == data[i].word){
                 data[i].count++;
-                count++;
+                find++;
             }
-        }if (count == 0){
-            data[last_word].word == input;
+        }if (find == 0){
+            data[last_word].word = input;
             data[last_word].count = 1;
             last_word++;
         }
-        scanf("%20s", input);    
+        find = 0;
     }
 
-    printf("Output:\n");
-    for(i = 0; i < last_word; i++){
-        printf("%s = %d\n", data[i].word, data[i].count);
+    cout << "Output:" << endl;
+    for(int j = 0; j < last_word; j++){
+        cout << data[j].word << " = " << data[j].count << endl;
     }
 }
